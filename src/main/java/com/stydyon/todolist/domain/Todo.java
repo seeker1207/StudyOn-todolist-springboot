@@ -15,12 +15,12 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "todoOneday_id")
     private TodoOneday todoOneday;
 
     @Column(nullable = false)
-    private String desc;
+    private String description;
 
     @Column(nullable = false)
     private boolean isComplete;
@@ -29,7 +29,7 @@ public class Todo {
     public Todo(Long id, TodoOneday todoOneday, String desc, boolean isComplete) {
         this.id = id;
         this.todoOneday = todoOneday;
-        this.desc = desc;
+        this.description = desc;
         this.isComplete = isComplete;
     }
 
@@ -37,13 +37,5 @@ public class Todo {
         this.todoOneday = todoOneday;
     }
 
-    @Override
-    public String toString() {
-        return "Todo{" +
-                "id=" + id +
-                ", todoOneday=" + todoOneday +
-                ", desc='" + desc + '\'' +
-                ", isComplete=" + isComplete +
-                '}';
-    }
+
 }

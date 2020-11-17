@@ -13,7 +13,7 @@ public class TodoResponseDto {
 
     public TodoResponseDto(Todo todo) {
         this.id = todo.getId();
-        this.desc = todo.getDesc();
+        this.desc = todo.getDescription();
         this.isComplete = todo.isComplete();
     }
 }

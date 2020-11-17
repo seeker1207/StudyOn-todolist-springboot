@@ -47,10 +47,10 @@ public class TodoOnedayService {
     }
 
     @Transactional
-    public List<TodoOnedayResponseDto> getTodoOneDayByMonth(int month) {
+    public List<TodoOnedayResponseDto> getTodoOneDayByMonth(int month, Long userId) {
 
         List<TodoOnedayResponseDto> todoOnedayResponseDtos = new ArrayList<>();
-        List<TodoOneday> resultTodoOneday = todoOnedayRepository.findTodoOnedaysByMonth(month);
+        List<TodoOneday> resultTodoOneday = todoOnedayRepository.findTodoOnedaysByMonth(month, userId);
 
         for (TodoOneday todoOneday : resultTodoOneday) {
             todoOnedayResponseDtos.add(new TodoOnedayResponseDto(todoOneday));
@@ -70,12 +70,13 @@ public class TodoOnedayService {
 
     @Transactional
     public boolean deleteTodo(Long todoId) {
-        Optional<Todo> opt = todoRepository.findById(todoId);
+//        Optional<Todo> opt = todoRepository.findById(todoId);
+//
+//        if(opt.isEmpty()) return false;
+//
+//        opt.ifPresent(todo -> todoRepository.deleteById(todoId));
 
-        if(opt.isEmpty()) return false;
-
-        opt.ifPresent(todo -> todoRepository.delete(todo));
-
+        todoRepository.deleteById(todoId);
         return true;
     }
 }

@@ -30,9 +30,10 @@ public class TodoListController {
     }
 
     @GetMapping("/todo-oneday")
-    public List<TodoOnedayResponseDto> getTodoOnedaysByMonth(@RequestParam("month") int month) {
+    public List<TodoOnedayResponseDto> getTodoOnedaysByMonth(@RequestParam("month") int month,
+                                                             @RequestParam("userId") Long userId) {
 
-        return todoOnedayService.getTodoOneDayByMonth(month);
+        return todoOnedayService.getTodoOneDayByMonth(month, userId);
     }
     @PutMapping("/todo-oneday/{todoOnedayId}")
     public TodoOnedayResponseDto checkAchieve(@PathVariable("todoOnedayId") Long todoOnedayId,

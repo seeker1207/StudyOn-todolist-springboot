@@ -12,6 +12,6 @@ public interface TodoOnedayRepository extends JpaRepository<TodoOneday, Long> {
 
     TodoOneday findTodoOnedayByUserIdAndTodoDate(Long userId, LocalDate todoDate);
 
-    @Query(value = "select DISTINCT id, achievement, todo_date, user_id from todo_oneday t where MONTH(t.todo_date) = ?1 ", nativeQuery = true)
-    List<TodoOneday> findTodoOnedaysByMonth(int month);
+    @Query(value = "select DISTINCT id, achievement, todo_date, user_id from todo_oneday t where MONTH(t.todo_date) = ?1 and user_id = ?2", nativeQuery = true)
+    List<TodoOneday> findTodoOnedaysByMonth(int month, Long userId);
 }
